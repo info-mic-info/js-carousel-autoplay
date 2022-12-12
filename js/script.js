@@ -39,9 +39,15 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 
-setInterval(myFunction, 3000){
+// ********************* ESERCIZIO*************************
 
-function myFunction{
+next.addEventListener('click', function () {
+    //verifico l'elemento attivo (itemActive)
+    //incremento il suo valore di 1
+    //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
+    //stessa cosa per i cerchi
+    //verifico l'elemento attivo (itemActive)
+    
     if (itemActive < imagesArray.length - 1) {
 
         items[itemActive].classList.remove(`active`);
@@ -63,47 +69,59 @@ function myFunction{
         items[itemActive].classList.add(`active`)
 
     }
-}
-}
-// ********************* ESERCIZIO*************************
 
-// next.addEventListener('click', function () {
+});
+
+prev.addEventListener('click', function () {
     //verifico l'elemento attivo (itemActive)
-    //incremento il suo valore di 1
+    //decremento il suo valore di 1
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
     //stessa cosa per i cerchi
-    //verifico l'elemento attivo (itemActive)
-    
-    
 
+    if (itemActive > 0) {
 
-
-// prev.addEventListener('click', function () {
-//     //verifico l'elemento attivo (itemActive)
-//     //decremento il suo valore di 1
-//     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
-//     //stessa cosa per i cerchi
-
-//     if (itemActive > 0) {
-
-//         items[itemActive].classList.remove(`active`);
-//         circles[itemActive].classList.remove('active');
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
         
         
-//         itemActive -=1 
-//         circles[itemActive].classList.add('active');
-//         items[itemActive].classList.add(`active`)
-//     }
+        itemActive -=1 
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
+    }
     
-//     else {
-//         items[itemActive].classList.remove(`active`);
-//         circles[itemActive].classList.remove('active');
+    else {
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
         
-//         itemActive = items.length -1
-//         circles[itemActive].classList.add('active');
-//         items[itemActive].classList.add(`active`)
+        itemActive = items.length -1
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
 
-//     }
+    }
 
-// })
+})
 
+
+setInterval (function(){
+    if (itemActive < imagesArray.length - 1) {
+
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
+        
+        itemActive += 1 
+        // itemActive ++
+
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
+    }
+    
+    else {
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
+        
+        itemActive= 0
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
+
+    }
+},2000)
