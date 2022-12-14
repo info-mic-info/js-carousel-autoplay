@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: solid 1px black; */
 }
 
 .container{
@@ -87,7 +88,7 @@
 }
 
 .circle-button{
-    border-radius: 50%;
+    border-radius: 100%;
     padding:  10px 10px;
     font-size: 30px;
     border: none;
@@ -102,6 +103,16 @@
 
 .circle-button#pause{
     background-color: orange;
+    color: white;
+}
+
+.circle-button#play:hover{
+    background-color: darkgreen;
+    color: white;
+}
+
+.circle-button#pause:hover{
+    background-color: darkorange;
     color: white;
 }
 

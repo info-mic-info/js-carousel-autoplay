@@ -1,3 +1,30 @@
+function nextSlide()
+{
+    if (itemActive < imagesArray.length - 1) {
+
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
+        
+        itemActive += 1 
+        // itemActive ++
+
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
+    }
+    
+    else {
+        items[itemActive].classList.remove(`active`);
+        circles[itemActive].classList.remove('active');
+        
+        itemActive= 0
+        circles[itemActive].classList.add('active');
+        items[itemActive].classList.add(`active`)
+
+    }
+}
+
+
+
 //Creo array immagini
 const imagesArray = [
     "01.webp",
@@ -41,36 +68,16 @@ const next = document.querySelector('.next');
 
 // ********************* ESERCIZIO*************************
 
-next.addEventListener('click', function () {
+next.addEventListener('click',  nextSlide())
     //verifico l'elemento attivo (itemActive)
     //incremento il suo valore di 1
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
     //stessa cosa per i cerchi
     //verifico l'elemento attivo (itemActive)
     
-    if (itemActive < imagesArray.length - 1) {
+   
 
-        items[itemActive].classList.remove(`active`);
-        circles[itemActive].classList.remove('active');
-        
-        itemActive += 1 
-        // itemActive ++
-
-        circles[itemActive].classList.add('active');
-        items[itemActive].classList.add(`active`)
-    }
-    
-    else {
-        items[itemActive].classList.remove(`active`);
-        circles[itemActive].classList.remove('active');
-        
-        itemActive= 0
-        circles[itemActive].classList.add('active');
-        items[itemActive].classList.add(`active`)
-
-    }
-
-});
+;
 
 prev.addEventListener('click', function () {
     //verifico l'elemento attivo (itemActive)
@@ -102,26 +109,12 @@ prev.addEventListener('click', function () {
 })
 
 
-setInterval (function(){
-    if (itemActive < imagesArray.length - 1) {
+let myInterval = setInterval (nextSlide,2000)
 
-        items[itemActive].classList.remove(`active`);
-        circles[itemActive].classList.remove('active');
-        
-        itemActive += 1 
-        // itemActive ++
+document.getElementById(`play`).addEventListener(`click`, function(){
+    myInterval = setInterval (nextSlide,2000)
+})
 
-        circles[itemActive].classList.add('active');
-        items[itemActive].classList.add(`active`)
-    }
-    
-    else {
-        items[itemActive].classList.remove(`active`);
-        circles[itemActive].classList.remove('active');
-        
-        itemActive= 0
-        circles[itemActive].classList.add('active');
-        items[itemActive].classList.add(`active`)
-
-    }
-},2000)
+document.getElementById(`pause`).addEventListener(`click`, function(){
+    clearInterval(myInterval)
+})
